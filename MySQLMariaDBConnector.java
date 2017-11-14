@@ -33,7 +33,7 @@ public class MySQLMariaDBConnector {
    * @param username String
    * @param password  String
    */
-  public MySQL(
+  public MySQLMariaDBConnector(
     String url, String port, String database, String username, String password
   ) {
     this.URL = url;
@@ -56,7 +56,7 @@ public class MySQLMariaDBConnector {
     try {
       Class.forName("com.mysql.jdbc.Driver");
     } catch(ClassNotFoundException ex) {
-      Logger.getLogger(MySQL.class.getName()).log(Level.SEVERE, null, ex);
+      Logger.getLogger(MySQLMariaDBConnector.class.getName()).log(Level.SEVERE, null, ex);
       return false;
     }
     return true;
@@ -76,7 +76,7 @@ public class MySQLMariaDBConnector {
       this.connection = DriverManager.getConnection(metaData, this.USERNAME, this.PASSWORD
       );
     } catch(SQLException ex) {
-      Logger.getLogger(MySQL.class.getName()).log(Level.SEVERE, null, ex);
+      Logger.getLogger(MySQLMariaDBConnector.class.getName()).log(Level.SEVERE, null, ex);
       System.exit(1);
     }
     return this.connection != null;
@@ -106,7 +106,7 @@ public class MySQLMariaDBConnector {
         this.resultSet = null;
       }
     } catch(SQLException ex) {
-      Logger.getLogger(MySQL.class.getName()).log(Level.SEVERE, null, ex);
+      Logger.getLogger(MySQLMariaDBConnector.class.getName()).log(Level.SEVERE, null, ex);
       return false;
     }
     return true;
@@ -132,7 +132,7 @@ public class MySQLMariaDBConnector {
         this.statement = this.connection.createStatement();
         this.resultSet = this.statement.executeQuery(query);
       } catch(SQLException ex) {
-        Logger.getLogger(MySQL.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(MySQLMariaDBConnector.class.getName()).log(Level.SEVERE, null, ex);
         this.resultSet = null;
       }
     }
@@ -149,7 +149,7 @@ public class MySQLMariaDBConnector {
         this.statement = this.connection.createStatement();
         this.statement.executeUpdate(query);
       } catch(SQLException ex) {
-        Logger.getLogger(MySQL.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(MySQLMariaDBConnector.class.getName()).log(Level.SEVERE, null, ex);
       } finally {
         this.close();
       }
@@ -166,7 +166,7 @@ public class MySQLMariaDBConnector {
         this.statement = this.connection.createStatement();
         this.statement.executeUpdate(query);
       } catch(SQLException ex) {
-        Logger.getLogger(MySQL.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(MySQLMariaDBConnector.class.getName()).log(Level.SEVERE, null, ex);
       } finally {
         this.close();
       }
